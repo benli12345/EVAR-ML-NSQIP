@@ -208,9 +208,9 @@ plot(perf_hispanic)
 plot(perf_nonhispanic, add = TRUE, col = 'blue')
 abline(a=0,b=1)
 
-#Subgroup analysis based on prior EVAR
-test_prior <- test[test$PRIOR_EVAR == 1, ]
-test_noprior <- test[test$PRIOR_EVAR == 0, ]
+#Subgroup analysis based on prior AAA repair
+test_prior <- test[test$PRIOR_EVAR == 1 | test$PRIOR_OSR == 1, ]
+test_noprior <- test[test$PRIOR_EVAR == 0 & test$PRIOR_OSR == 0, ]
 predictors_test_prior <- test_prior %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, ASACLAS, PRIOR_OSR, PRIOR_EVAR, PRIOR_ABDO, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, AAA_DIAM, DIST_EXT, MAIN_BODY, ACCESS, ILIAC_CONDUIT, IIA_EMBO, IIA_REVASC, IBG)
 predictors_test_noprior <- test_noprior %>% select(AdmQtr, OperYR, Age, SEX, BMI, RACE_NEW, ETHNICITY_HISPANIC, ORIGIN, HYPERMED, DIABETES, SMOKE_CURRENT, HXCHF, HXCOPD, DIALYSIS, FNSTATUS2, ASACLAS, PRIOR_OSR, PRIOR_EVAR, PRIOR_ABDO, PRSODM_mmolL, PRBUN_mmolL, PRCREAT_umolL, PRALBUM_gL, PRWBC_Kmm3, PRHCT_LL, PRPLATE_Kcumm, PRINR, PRPTT_s, AAA_DIAM, DIST_EXT, MAIN_BODY, ACCESS, ILIAC_CONDUIT, IIA_EMBO, IIA_REVASC, IBG)
 
