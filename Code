@@ -112,6 +112,11 @@ BrierScore(XGB_pred, test$MACE)
 importance_matrix <- xgb.importance(names(predictors_test), model = XGB)
 xgb.plot.importance(importance_matrix, top_n = 10)
 
+#Calculate AUPRC
+library(PRROC)
+pr <- pr.curve(scores.class0 = xgb_pred[test$MACE == 1], scores.class1 = xgb_pred[test$MACE == 0], curve = T)
+plot(pr)
+
 #Subgroup analysis based on age
 test_under70 <- test[test$Age<70, ]
 test_over70 <- test[test$Age>70, ]
